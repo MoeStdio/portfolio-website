@@ -1,0 +1,39 @@
+name: Deploy to VPS (server)
+
+on:
+  push:
+    branches:
+      - main # (main default github branch)
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # grab code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # install node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # compile Astro
+      - name: Build Project
+        run: npm run build
+
+      # copy dist/
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
+          REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
+          SOURCE: "dist/"
+          TARGET: "/var/www/moestdio"
