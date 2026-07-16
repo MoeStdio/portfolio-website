@@ -1,0 +1,43 @@
+---
+import '../styles/global.css'
+
+const { title } = Astro.props;
+---
+
+<html lang="eg" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>{title}</title>
+        <link rel="icon" href="/image.png" type="image/png">
+    </head>
+
+    <body class="bg-slate-700 text-slate-100 font-sans">
+        <header class="fixed w-full top-0 z-50 bg-slate-800/80 backdrop-blur-md">
+            <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+                <a href="/" class="flex items-center">
+                    <img src="/image.png" alt="moestdio logo" class="h-10 w-auto hover:opacity-80 transition-opacity"/>
+                </a>
+
+                <ul class="flex items-center gap-8">
+                    <li>
+                        <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="/">Home</a>
+                    </li>
+                    <li>
+                        <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="/about">About</a>
+                    </li>
+                    <li>
+                        <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="/projects">Projects</a>
+                    </li>
+                </ul>
+
+            </nav>
+        </header>
+
+
+        <slot />
+        <script>
+            import '../scripts/smooth-scroll.js'
+        </script>
+    </body>
+</html>
