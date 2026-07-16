@@ -37,6 +37,14 @@ if (document.querySelector('.project-snap-target')) {
 
   currentIndex = getClosestIndex();
 
+  lenis.scrollTo(targets[currentIndex], {
+  offset: 0,
+  duration: 0,
+  immediate: true,
+  });
+
+  document.querySelector('main')?.classList.remove('snap-loading');
+
   function goToIndex(index) {
     index = Math.max(0, Math.min(targets.length - 1, index));
     currentIndex = index;
@@ -91,15 +99,17 @@ if (document.querySelector('.project-snap-target')) {
   }, { passive: true });
 
   window.addEventListener('keydown', (e) => {
-    if (isSnapping) return;
+  if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault(); // stop native scroll on every repeat, not just the first
 
-    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-      e.preventDefault();
+      if (e.repeat || isSnapping) return; // but only actually move on a real, fresh press
+
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
       goToIndex(currentIndex + 1);
-    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-      e.preventDefault();
+      } else {
       goToIndex(currentIndex - 1);
-    }
+      }
+  }
   });
 
   window.addEventListener('resize', () => {
