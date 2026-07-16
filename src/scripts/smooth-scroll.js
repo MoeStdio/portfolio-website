@@ -1,5 +1,7 @@
 import Lenis from 'lenis';
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -8,67 +10,70 @@ const lenis = new Lenis({
 });
 
 if (document.querySelector('.project-snap-target')) {
-        function raf(time) {
+
+  function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 
-    const targets = Array.from(document.querySelectorAll('.project-snap-target'));
+  const targets = Array.from(document.querySelectorAll('.project-snap-target'));
 
-    let currentIndex = 0;
-    let isSnapping = false;
-    const LOCK_MS = 1000;
+  let currentIndex = 0;
+  let isSnapping = false;
 
-    function getClosestIndex() {
+  function getClosestIndex() {
     let closest = 0;
     let minDistance = Infinity;
     targets.forEach((target, i) => {
-        const distance = Math.abs(target.getBoundingClientRect().top);
-        if (distance < minDistance) {
+      const distance = Math.abs(target.getBoundingClientRect().top);
+      if (distance < minDistance) {
         minDistance = distance;
         closest = i;
-        }
+      }
     });
     return closest;
-    }
+  }
 
-    currentIndex = getClosestIndex();
+  currentIndex = getClosestIndex();
 
-    function goToIndex(index) {
+  function goToIndex(index) {
     index = Math.max(0, Math.min(targets.length - 1, index));
-    if (index === currentIndex && !isSnapping) {}
     currentIndex = index;
     isSnapping = true;
 
     lenis.scrollTo(targets[currentIndex], {
-        offset: 0,
-        duration: 0.9,
-        lock: true,
-        onComplete: () => {
+      offset: 0,
+      duration: prefersReducedMotion ? 0 : 0.9,
+      lock: true,
+      onComplete: () => {
         isSnapping = false;
-        }
+      }
     });
-    }
+  }
 
-    window.addEventListener('wheel', (e) => {
+  window.addEventListener('wheel', (e) => {
     e.preventDefault();
     if (isSnapping) return;
 
     if (e.deltaY > 0) {
-        goToIndex(currentIndex + 1);
+      goToIndex(currentIndex + 1);
     } else if (e.deltaY < 0) {
-        goToIndex(currentIndex - 1);
+      goToIndex(currentIndex - 1);
     }
-    }, { passive: false });
+  }, { passive: false });
 
-    let touchStartY = null;
+  let touchStartY = null;
 
-    window.addEventListener('touchstart', (e) => {
+  window.addEventListener('touchstart', (e) => {
     touchStartY = e.touches[0].clientY;
-    }, { passive: true });
+  }, { passive: true });
 
-    window.addEventListener('touchend', (e) => {
+  window.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('touchend', (e) => {
     if (touchStartY === null || isSnapping) return;
     const touchEndY = e.changedTouches[0].clientY;
     const delta = touchStartY - touchEndY;
@@ -76,12 +81,30 @@ if (document.querySelector('.project-snap-target')) {
     const SWIPE_THRESHOLD = window.innerHeight * 0.08;
 
     if (Math.abs(delta) > SWIPE_THRESHOLD) {
-        if (delta > 0) {
+      if (delta > 0) {
         goToIndex(currentIndex + 1);
-        } else {
+      } else {
         goToIndex(currentIndex - 1);
-        }
+      }
     }
     touchStartY = null;
-    }, { passive: true });
+  }, { passive: true });
+
+  window.addEventListener('keydown', (e) => {
+    if (isSnapping) return;
+
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      goToIndex(currentIndex + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      goToIndex(currentIndex - 1);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (!isSnapping) {
+      currentIndex = getClosestIndex();
+    }
+  });
 }
