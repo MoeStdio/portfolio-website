@@ -1,45 +1,20 @@
 ---
-import '../styles/global.css'
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
+<BaseLayout>
+	<section id="home" class="min-h-screen flex flex-col items-center justify-center p-6 gap-6">
+		<h1 class="text-6xl font-bold text-center">
+			moestdio
+		</h1>
 
-<html lang="eg" dir="ltr">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>moestdio</title>
+		<p class="text-xl text-slate-400 text-center max-w-xl">
+			Personal portfolio and sandbox currently in development.
+		</p>
 
-		<link rel="icon" href="/image.png" type="image/png">
-	</head>
-
-	<body class="bg-slate-900 text-slate-100 font-sans">
-		<section id="home" class="min-h-screen flex flex-col items-center justify-center p-6 gap-6">
-
-			<h1 class="text-6xl font-bold text-center">
-				moestdio
-			</h1>
-
-			<p class="text-xl text-slate-400 text-center max-w-xl">
-				Personal portfolio and sandbox currently in development.
-			</p>
-
-			<a href="#projects" class="bg-indigo-600 hover:bg-indigo-500 px-8 py-3 rounded-full font-semibold transition-colors">
-				View Projects
-			</a>
-
-		</section>
-
-		<section id="about" class="bg-slate-800 py-24 px-6">
-			<div class="max-w-3xl mx-auto">
-				<h2 class="text-4xl font-bold mb-6 text-center">
-					About Me
-				</h2>
-
-				<p class="text-lg text-slate-300 leading-relaxed text-center">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-			</div>
-
-		</section>
-	</body>
-</html>
+		<a href="/projects" class="bg-indigo-600 hover:bg-indigo-500 px-8 py-3 rounded-full font-semibold transition-colors">
+			View Projects
+		</a>
+	</section>
+</BaseLayout>
