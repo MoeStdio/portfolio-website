@@ -2,17 +2,17 @@
 const { title, coverText, reverse = false } = Astro.props;
 ---
 
-<section class="min-h-screen w-full flex flex-col justify-center snap-center px-8 relative project-snap-target">
-    
+<section class="min-h-dvh w-full flex flex-col justify-center snap-center px-8 py-24 relative project-snap-target">
+
     <div class={`max-w-360rem mx-auto w-full flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-16 items-center`}>
         
-        <!-- The Card -->
+        <!-- Card -->
         <div class="w-full md:w-1/2 bg-slate-800 rounded-2xl aspect-video flex items-center justify-center border border-slate-700 hover:border-indigo-500 transition-colors cursor-pointer group shadow-2xl">
             <span class="text-slate-400 font-medium group-hover:text-indigo-400 transition-colors text-2xl">{coverText}</span>
         </div>
 
         <div class="w-full md:w-1/2 flex flex-col justify-center">
-            <h2 class="text-6xl lg:text-7xl font-bold mb-8">{title}</h2>
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8">{title}</h2>
             
             <div class="text-2xl text-slate-400 leading-relaxed">
                 <slot />

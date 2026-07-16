@@ -63,6 +63,7 @@ if (document.querySelector('.project-snap-target')) {
     }, { passive: false });
 
     let touchStartY = null;
+
     window.addEventListener('touchstart', (e) => {
     touchStartY = e.touches[0].clientY;
     }, { passive: true });
@@ -71,7 +72,8 @@ if (document.querySelector('.project-snap-target')) {
     if (touchStartY === null || isSnapping) return;
     const touchEndY = e.changedTouches[0].clientY;
     const delta = touchStartY - touchEndY;
-    const SWIPE_THRESHOLD = 30;
+
+    const SWIPE_THRESHOLD = window.innerHeight * 0.08;
 
     if (Math.abs(delta) > SWIPE_THRESHOLD) {
         if (delta > 0) {
