@@ -7,17 +7,34 @@ import { Icon } from "astro-icon/components";
 ---
 
 <BaseLayout title="About | moestdio">
-    <main class="min-h-screen pt-16 md:pt-32 touch-none snap-loading relative overflow-hidden">
-        <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-indigo-600/20 rounded-full blur-[100px] md:blur-[120px] pointer-events-none -z-10"></div>
-        <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px] bg-cyan-500/10 rounded-full blur-[80px] md:blur-[100px] pointer-events-none -z-10 translate-x-1/4 -translate-y-1/4"></div>
+    <main
+        class="min-h-screen pt-16 md:pt-32 touch-none snap-loading relative overflow-hidden"
+    >
+        <div
+            class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-indigo-600/20 rounded-full blur-[100px] md:blur-[120px] pointer-events-none -z-10 will-change-transform transform-gpu"
+        >
+        </div>
+        <div
+            class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px] bg-cyan-500/10 rounded-full blur-[80px] md:blur-[100px] pointer-events-none -z-10 translate-x-1/4 -translate-y-1/4 will-change-transform transform-gpu"
+        >
+        </div>
 
-        <section class="min-h-dvh w-full flex flex-col justify-center snap-center px-6 pt-24 pb-6 md:px-8 md:py-24 relative snap-target">
+        <section
+            class="min-h-dvh w-full flex flex-col justify-center snap-center px-6 pt-24 pb-6 md:px-8 md:py-24 relative snap-target"
+        >
             <div class="max-w-5xl mx-auto w-full text-center relative z-10">
-                <h1 class="reveal text-[clamp(2.5rem,8vw,6rem)] font-bold mb-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent box-decoration-clone">
+                <h1
+                    class="reveal text-[clamp(2.5rem,8vw,6rem)] font-bold mb-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent box-decoration-clone"
+                >
                     Moe
                 </h1>
-                <p class="reveal text-[clamp(1.125rem,3vw,1.5rem)] text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-12">
-                    I'm an aspiring game developer who finds inspiration in nature. I love programming and have tried to build several games, constantly learning and experimenting with new engines and mechanics.
+                <p
+                    class="reveal text-[clamp(1.125rem,3vw,1.5rem)] text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-12"
+                >
+                    I'm an aspiring game developer who finds inspiration in
+                    nature. I love programming and have tried to build several
+                    games, constantly learning and experimenting with new
+                    engines and mechanics.
                 </p>
                 <div class="reveal flex flex-wrap justify-center gap-4">
                     <Tag text="Programmer" color="indigo" />
@@ -27,13 +44,21 @@ import { Icon } from "astro-icon/components";
             </div>
         </section>
 
-        <section class="min-h-dvh w-full flex flex-col justify-center snap-center px-4 pt-24 pb-6 md:px-8 md:py-24 relative snap-target">
+        <section
+            class="min-h-dvh w-full flex flex-col justify-center snap-center px-4 pt-24 pb-6 md:px-8 md:py-24 relative snap-target"
+        >
             <div class="max-w-6xl mx-auto w-full">
-                <h2 class="reveal text-[clamp(1.75rem,5vw,4rem)] font-bold mb-6 md:mb-12 text-center text-slate-900 dark:text-slate-100">My Toolkit</h2>
-                
+                <h2
+                    class="reveal text-[clamp(1.75rem,5vw,4rem)] font-bold mb-6 md:mb-12 text-center text-slate-900 dark:text-slate-100"
+                >
+                    My Toolkit
+                </h2>
+
                 <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-                    <div class="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[140px] max-w-[280px]">
-                        <SkillCard 
+                    <div
+                        class="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[140px] max-w-[280px]"
+                    >
+                        <SkillCard
                             title="Game Development"
                             description="Developing 2D/3D games and mechanics."
                             icon="lucide:gamepad-2"
@@ -41,8 +66,10 @@ import { Icon } from "astro-icon/components";
                             rotation="-rotate"
                         />
                     </div>
-                    <div class="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[140px] max-w-[280px]">
-                        <SkillCard 
+                    <div
+                        class="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[140px] max-w-[280px]"
+                    >
+                        <SkillCard
                             title="Porgramming"
                             description="Fluent in Python. Learning TypeScript and JavaScript."
                             icon="lucide:code-xml"
@@ -50,8 +77,10 @@ import { Icon } from "astro-icon/components";
                             rotation="rotate"
                         />
                     </div>
-                    <div class="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[140px] max-w-[280px]">
-                        <SkillCard 
+                    <div
+                        class="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[140px] max-w-[280px]"
+                    >
+                        <SkillCard
                             title="Web Development"
                             description="Building responsive sites with modern frameworks."
                             icon="lucide:panels-top-left"
@@ -59,8 +88,10 @@ import { Icon } from "astro-icon/components";
                             rotation="-rotate"
                         />
                     </div>
-                    <div class="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[140px] max-w-[280px]">
-                        <SkillCard 
+                    <div
+                        class="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[140px] max-w-[280px]"
+                    >
+                        <SkillCard
                             title="Tools & Workflow"
                             description="Comfortable with Git, Linux servers, and CI/CD pipelines."
                             icon="lucide:workflow"
@@ -72,12 +103,20 @@ import { Icon } from "astro-icon/components";
             </div>
         </section>
 
-        <section class="min-h-dvh w-full flex flex-col justify-center snap-center px-6 pt-24 pb-6 md:px-8 md:py-24 relative snap-target">
+        <section
+            class="min-h-dvh w-full flex flex-col justify-center snap-center px-6 pt-24 pb-6 md:px-8 md:py-24 relative snap-target"
+        >
             <div class="max-w-5xl mx-auto w-full">
-                <h2 class="reveal text-[clamp(1.75rem,5vw,4rem)] font-bold mb-8 md:mb-16 text-slate-900 dark:text-slate-100 ml-2 md:ml-0">My Journey</h2>
-                
-                <div class="space-y-8 md:space-y-12 border-l-2 border-slate-200 dark:border-slate-700 pl-6 md:pl-10 ml-2 md:ml-0">
-                    <JourneyItem 
+                <h2
+                    class="reveal text-[clamp(1.75rem,5vw,4rem)] font-bold mb-8 md:mb-16 text-slate-900 dark:text-slate-100 ml-2 md:ml-0"
+                >
+                    My Journey
+                </h2>
+
+                <div
+                    class="space-y-8 md:space-y-12 border-l-2 border-slate-200 dark:border-slate-700 pl-6 md:pl-10 ml-2 md:ml-0"
+                >
+                    <JourneyItem
                         year="2026 - Present"
                         role="Web Developer"
                         company="Astro, CSS, JS"
@@ -85,7 +124,7 @@ import { Icon } from "astro-icon/components";
                         color="cyan"
                     />
 
-                    <JourneyItem 
+                    <JourneyItem
                         year="2022 - Present"
                         role="Game Developer"
                         company="Roblox Studio"
@@ -93,7 +132,7 @@ import { Icon } from "astro-icon/components";
                         color="indigo"
                     />
 
-                    <JourneyItem 
+                    <JourneyItem
                         year="Earlier"
                         role="Curious Programmer"
                         company="Self-Taught"
@@ -104,18 +143,33 @@ import { Icon } from "astro-icon/components";
             </div>
         </section>
 
-        <section class="min-h-dvh w-full flex flex-col justify-center snap-center px-6 pt-24 pb-6 md:px-8 md:py-24 relative snap-target">
+        <section
+            class="min-h-dvh w-full flex flex-col justify-center snap-center px-6 pt-24 pb-6 md:px-8 md:py-24 relative snap-target"
+        >
             <div class="max-w-3xl mx-auto w-full text-center">
-                <h2 class="reveal text-[clamp(2.5rem,6vw,5rem)] font-bold mb-4 md:mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent box-decoration-clone">Let's build something.</h2>
-                <p class="reveal text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 md:mb-12 max-w-xl mx-auto leading-snug md:leading-relaxed">
-                    Whether it's a new game, an interactive web experience, or just chatting about programming and nature, I'd love to connect.
+                <h2
+                    class="reveal text-[clamp(2.5rem,6vw,5rem)] font-bold mb-4 md:mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent box-decoration-clone"
+                >
+                    Let's build something.
+                </h2>
+                <p
+                    class="reveal text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 md:mb-12 max-w-xl mx-auto leading-snug md:leading-relaxed"
+                >
+                    Whether it's a new game, an interactive web experience, or
+                    just chatting about programming and nature, I'd love to
+                    connect.
                 </p>
-                <a href="/contact" class="reveal inline-flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-full hover:scale-105 active:scale-95 hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all duration-300 shadow-xl shadow-slate-900/10 dark:shadow-white/10 hover:shadow-indigo-500/25 group focus:outline-none">
+                <a
+                    href="/contact"
+                    class="reveal inline-flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold px-6 py-3 md:px-8 md:py-4 rounded-full hover:scale-105 active:scale-95 hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all duration-300 shadow-xl shadow-slate-900/10 dark:shadow-white/10 hover:shadow-indigo-500/25 group focus:outline-none"
+                >
                     Get in Touch
-                    <Icon name="lucide:chevron-down" class="w-4 h-4 md:w-5 md:h-5 -rotate-90 group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />
+                    <Icon
+                        name="lucide:chevron-down"
+                        class="w-4 h-4 md:w-5 md:h-5 -rotate-90 group-hover:translate-x-1 group-active:translate-x-1 transition-transform"
+                    />
                 </a>
             </div>
         </section>
-
     </main>
 </BaseLayout>
