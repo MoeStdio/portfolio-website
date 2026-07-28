@@ -12,7 +12,6 @@ const { title, coverText, reverse = false, sandboxHeader = false } = Astro.props
 
     <div class={`max-w-7xl mx-auto w-full flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}>
         
-        <!-- Card -->
         <div class="w-full md:w-1/2 bg-slate-800 rounded-2xl aspect-video flex items-center justify-center border border-slate-700 hover:border-indigo-500 transition-colors cursor-pointer group shadow-2xl">
             <span class="text-slate-400 font-medium group-hover:text-indigo-400 transition-colors text-2xl">{coverText}</span>
         </div>

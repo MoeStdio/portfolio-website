@@ -10,9 +10,16 @@ const lenis = new Lenis({
 });
 
 if (document.querySelector('.snap-target')) {
+  let isTabVisible = true;
+
+  document.addEventListener('visibilitychange', () => {
+    isTabVisible = document.visibilityState === 'visible';
+  });
 
   function raf() {
-    lenis.raf(performance.now());
+    if (isTabVisible) {
+      lenis.raf(performance.now());
+    }
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
@@ -130,5 +137,5 @@ if (document.querySelector('.snap-target')) {
       currentIndex = getClosestIndex();
       updateIndicator(currentIndex);
     }
-  });
+  }, { passive: true });
 }
