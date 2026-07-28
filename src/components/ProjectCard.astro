@@ -7,28 +7,28 @@ const { title, coverText, reverse = false, sandboxHeader = false, tags = [] } = 
 
     {sandboxHeader && (
         <div class="absolute top-8 md:top-20 w-full left-0 pointer-events-none">
-            <h1 class="text-3xl md:text-6xl font-bold tracking-tight text-center text-amber-50/60">My Sandbox</h1>
+            <h1 class="text-3xl md:text-6xl font-bold tracking-tight text-center text-amber-900/10 dark:text-amber-50/60">My Sandbox</h1>
         </div>
     )}
 
     <div class={`max-w-7xl mx-auto w-full flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-4 md:gap-16 items-center`}>
         
-        <div class="w-full md:w-1/2 bg-slate-800 rounded-2xl aspect-[2/1] md:aspect-video flex items-center justify-center border border-slate-700 hover:border-indigo-500 transition-colors cursor-pointer group shadow-2xl">
-            <span class="text-slate-400 font-medium group-hover:text-indigo-400 transition-colors text-2xl">{coverText}</span>
+        <div class="reveal w-full md:w-1/2 bg-slate-100 dark:bg-slate-800 rounded-2xl aspect-[2/1] md:aspect-video flex items-center justify-center border border-slate-200 dark:border-slate-700 hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors cursor-pointer group shadow-lg dark:shadow-2xl">
+            <span class="text-slate-500 dark:text-slate-400 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors text-2xl">{coverText}</span>
         </div>
 
         <div class="w-full md:w-1/2 flex flex-col justify-center">
-            <h2 class="text-[clamp(1.5rem,5vw,4.5rem)] font-bold mb-2 md:mb-6">{title}</h2>
+            <h2 class="reveal text-[clamp(1.5rem,5vw,4.5rem)] font-bold mb-2 md:mb-6">{title}</h2>
             
             {tags && tags.length > 0 && (
-                <div class="flex flex-wrap gap-2 mb-4 md:mb-8">
+                <div class="reveal flex flex-wrap gap-2 mb-4 md:mb-8">
                     {tags.map((tag: any) => (
                         <Tag text={typeof tag === 'string' ? tag : tag.text} color={typeof tag === 'string' ? 'slate' : tag.color} />
                     ))}
                 </div>
             )}
             
-            <div class="text-[clamp(0.875rem,2vw,1.5rem)] text-slate-400 leading-normal md:leading-relaxed">
+            <div class="reveal text-sm md:text-[clamp(1rem,2vw,1.5rem)] text-slate-600 dark:text-slate-400 leading-normal md:leading-relaxed">
                 <slot />
             </div>
         </div>
