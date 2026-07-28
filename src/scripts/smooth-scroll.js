@@ -9,7 +9,7 @@ const lenis = new Lenis({
   wheelMultiplier: 0,
 });
 
-if (document.querySelector('.project-snap-target')) {
+if (document.querySelector('.snap-target')) {
 
   function raf() {
     lenis.raf(performance.now());
@@ -17,7 +17,14 @@ if (document.querySelector('.project-snap-target')) {
   }
   requestAnimationFrame(raf);
 
-  const targets = Array.from(document.querySelectorAll('.project-snap-target'));
+  const targets = Array.from(document.querySelectorAll('.snap-target'));
+  const scrollIndicator = document.getElementById('scroll-indicator');
+
+  function updateIndicator(index) {
+    if (scrollIndicator) {
+      scrollIndicator.style.opacity = index >= targets.length - 1 ? '0' : '0.5';
+    }
+  }
 
   let currentIndex = 0;
   let isSnapping = false;
@@ -36,6 +43,7 @@ if (document.querySelector('.project-snap-target')) {
   }
 
   currentIndex = getClosestIndex();
+  updateIndicator(currentIndex);
 
   lenis.scrollTo(targets[currentIndex], {
     offset: 0,
@@ -49,6 +57,7 @@ if (document.querySelector('.project-snap-target')) {
     index = Math.max(0, Math.min(targets.length - 1, index));
     currentIndex = index;
     isSnapping = true;
+    updateIndicator(currentIndex);
 
     lenis.scrollTo(targets[currentIndex], {
       offset: 0,
@@ -61,8 +70,12 @@ if (document.querySelector('.project-snap-target')) {
   }
 
   window.addEventListener('wheel', (e) => {
+    if (isSnapping) {
+      e.preventDefault();
+      return;
+    }
+
     e.preventDefault();
-    if (isSnapping) return;
 
     if (e.deltaY > 0) {
       goToIndex(currentIndex + 1);
@@ -115,6 +128,7 @@ if (document.querySelector('.project-snap-target')) {
   window.addEventListener('resize', () => {
     if (!isSnapping) {
       currentIndex = getClosestIndex();
+      updateIndicator(currentIndex);
     }
   });
 }
