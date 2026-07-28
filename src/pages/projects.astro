@@ -5,42 +5,34 @@ import Lorem from '../components/Lorem.astro';
 ---
 
 <BaseLayout title="Projects | moestdio">
-    <main class="min-h-screen pt-16 md:pt-32 touch-none snap-loading">
+    <main class="min-h-screen pt-16 md:pt-32 touch-none snap-loading relative overflow-hidden">
+        <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-indigo-600/20 rounded-full blur-[100px] md:blur-[120px] pointer-events-none -z-10"></div>
+        <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px] bg-cyan-500/10 rounded-full blur-[80px] md:blur-[100px] pointer-events-none -z-10 translate-x-1/4 -translate-y-1/4"></div>
 
         <ProjectCard 
-            title="Project One"
-            coverText="Project One Cover"
+            title="Wobbly Employee"
+            coverText="Wobbly Employee | Cover"
             reverse={false}
             tags={[
-                { text: 'Web App', color: 'indigo' },
-                { text: 'Astro', color: 'slate' },
-                { text: 'Tailwind', color: 'cyan' }
+                { text: 'Roblox Studio', color: 'indigo' },
+                { text: '3D', color: 'amber' },
+                { text: 'WIP', color: 'cyan' }
             ]}
         >
-            <Lorem />
+            <p>A physics-comedy game where every object has almost no mass or friction, turning simple office tasks into chaotic disasters. You play as an employee climbing the corporate ladder by completing tasks and getting promoted to increasingly unhinged workplaces. I'm building the physics interactions, task systems, and progression mechanics from scratch.</p>
         </ProjectCard>
 
-        <ProjectCard 
-            title="Project Two"
-            coverText="Project Two Cover"
+            <ProjectCard 
+            title="Moestdio.com"
+            coverText="Moestdio.com | Cover"
             reverse={true}
             tags={[
-                { text: 'Game', color: 'emerald' },
-                { text: 'Animations', color: 'amber' }
+                { text: 'Web Development', color: 'emerald' },
+                { text: 'Astro', color: 'amber' },
             ]}
         >
-            <Lorem />
+            <p>My personal site and dev sandbox — built from scratch with Astro, deployed via GitHub Actions to a self-managed VPS running Caddy. A space to showcase what I'm building and experiment without the constraints of a "finished" product.</p>
         </ProjectCard>
-
-        <ProjectCard 
-            title="Project Three"
-            coverText="Project Three Cover"
-            reverse={false}
-            tags={['UI Design', 'Figma']}
-        >
-            <Lorem />
-        </ProjectCard>
-
     </main>
 
 </BaseLayout>

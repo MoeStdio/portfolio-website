@@ -27,5 +27,5 @@ pnpm-debug.log*
 # env
 .env
 
-# private documentation
+# private doc
 PRIVATE_GUIDE.md
