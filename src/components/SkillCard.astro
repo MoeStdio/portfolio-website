@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { title, description, icon, color = 'indigo', rotation = 'rotate' } = Astro.props;
+
+// Tailwind safe color mapping for hover and active (mobile touch) states
+const colorMap = {
+    indigo: {
+        wrapper: 'hover:border-indigo-500 active:border-indigo-500 hover:shadow-indigo-500/10 active:shadow-indigo-500/10',
+        iconBg: 'group-hover:bg-indigo-500 group-active:bg-indigo-500'
+    },
+    cyan: {
+        wrapper: 'hover:border-cyan-500 active:border-cyan-500 hover:shadow-cyan-500/10 active:shadow-cyan-500/10',
+        iconBg: 'group-hover:bg-cyan-500 group-active:bg-cyan-500'
+    },
+    emerald: {
+        wrapper: 'hover:border-emerald-500 active:border-emerald-500 hover:shadow-emerald-500/10 active:shadow-emerald-500/10',
+        iconBg: 'group-hover:bg-emerald-500 group-active:bg-emerald-500'
+    },
+    amber: {
+        wrapper: 'hover:border-amber-500 active:border-amber-500 hover:shadow-amber-500/10 active:shadow-amber-500/10',
+        iconBg: 'group-hover:bg-amber-500 group-active:bg-amber-500'
+    }
+};
+
+const rotClass = rotation === 'rotate' ? 'group-hover:rotate-6 group-active:rotate-6' : 'group-hover:-rotate-6 group-active:-rotate-6';
+const styles = colorMap[color] || colorMap.indigo;
+---
+<div tabindex="0" class={`bg-slate-800/50 p-4 md:p-8 rounded-2xl md:rounded-3xl border border-slate-700 hover:bg-slate-800 active:bg-slate-800 transition-all duration-300 hover:-translate-y-2 active:-translate-y-2 cursor-pointer group text-center shadow-xl flex flex-col items-center focus:outline-none ${styles.wrapper}`}>
+    <div class={`w-10 h-10 md:w-16 md:h-16 bg-slate-700 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-6 transition-all duration-300 ${styles.iconBg} ${rotClass}`}>
+        <Icon name={icon} class="w-5 h-5 md:w-8 md:h-8 text-slate-300 group-hover:text-white group-active:text-white transition-colors" />
+    </div>
+    <h3 class="font-bold text-sm md:text-xl mb-1 md:mb-3 text-slate-100">{title}</h3>
+    <p class="text-[10px] md:text-sm text-slate-400 leading-snug md:leading-relaxed line-clamp-3 md:line-clamp-none">{description}</p>
+</div>

@@ -5,12 +5,17 @@ import Lorem from '../components/Lorem.astro';
 ---
 
 <BaseLayout title="Projects | moestdio">
-    <main class="min-h-screen pt-24 md:pt-32 touch-none snap-loading">
+    <main class="min-h-screen pt-16 md:pt-32 touch-none snap-loading">
 
         <ProjectCard 
             title="Project One"
             coverText="Project One Cover"
             reverse={false}
+            tags={[
+                { text: 'Web App', color: 'indigo' },
+                { text: 'Astro', color: 'slate' },
+                { text: 'Tailwind', color: 'cyan' }
+            ]}
         >
             <Lorem />
         </ProjectCard>
@@ -19,6 +24,10 @@ import Lorem from '../components/Lorem.astro';
             title="Project Two"
             coverText="Project Two Cover"
             reverse={true}
+            tags={[
+                { text: 'Game', color: 'emerald' },
+                { text: 'Animations', color: 'amber' }
+            ]}
         >
             <Lorem />
         </ProjectCard>
@@ -27,6 +36,7 @@ import Lorem from '../components/Lorem.astro';
             title="Project Three"
             coverText="Project Three Cover"
             reverse={false}
+            tags={['UI Design', 'Figma']}
         >
             <Lorem />
         </ProjectCard>
