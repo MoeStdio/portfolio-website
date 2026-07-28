@@ -1,8 +1,9 @@
 ---
-const { title, coverText, reverse = false, sandboxHeader = false } = Astro.props;
+import Tag from './Tag.astro';
+const { title, coverText, reverse = false, sandboxHeader = false, tags = [] } = Astro.props;
 ---
 
-<section class="min-h-dvh w-full flex flex-col justify-center snap-center px-8 py-16 md:py-24 relative snap-target">
+<section class="min-h-dvh w-full flex flex-col justify-center snap-center px-6 pt-24 pb-6 md:px-8 md:py-24 relative snap-target">
 
     {sandboxHeader && (
         <div class="absolute top-8 md:top-20 w-full left-0 pointer-events-none">
@@ -10,16 +11,24 @@ const { title, coverText, reverse = false, sandboxHeader = false } = Astro.props
         </div>
     )}
 
-    <div class={`max-w-7xl mx-auto w-full flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}>
+    <div class={`max-w-7xl mx-auto w-full flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-4 md:gap-16 items-center`}>
         
-        <div class="w-full md:w-1/2 bg-slate-800 rounded-2xl aspect-video flex items-center justify-center border border-slate-700 hover:border-indigo-500 transition-colors cursor-pointer group shadow-2xl">
+        <div class="w-full md:w-1/2 bg-slate-800 rounded-2xl aspect-[2/1] md:aspect-video flex items-center justify-center border border-slate-700 hover:border-indigo-500 transition-colors cursor-pointer group shadow-2xl">
             <span class="text-slate-400 font-medium group-hover:text-indigo-400 transition-colors text-2xl">{coverText}</span>
         </div>
 
         <div class="w-full md:w-1/2 flex flex-col justify-center">
-            <h2 class="text-[clamp(1.75rem,6vw,4.5rem)] font-bold mb-4 md:mb-8">{title}</h2>
+            <h2 class="text-[clamp(1.5rem,5vw,4.5rem)] font-bold mb-2 md:mb-6">{title}</h2>
             
-            <div class="text-[clamp(1rem,2.5vw,1.5rem)] text-slate-400 leading-relaxed">
+            {tags && tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mb-4 md:mb-8">
+                    {tags.map((tag: any) => (
+                        <Tag text={typeof tag === 'string' ? tag : tag.text} color={typeof tag === 'string' ? 'slate' : tag.color} />
+                    ))}
+                </div>
+            )}
+            
+            <div class="text-[clamp(0.875rem,2vw,1.5rem)] text-slate-400 leading-normal md:leading-relaxed">
                 <slot />
             </div>
         </div>
