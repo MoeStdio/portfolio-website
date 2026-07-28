@@ -16,9 +16,9 @@ if (document.querySelector('.snap-target')) {
     isTabVisible = document.visibilityState === 'visible';
   });
 
-  function raf() {
+  function raf(time) {
     if (isTabVisible) {
-      lenis.raf(performance.now());
+      lenis.raf(time);
     }
     requestAnimationFrame(raf);
   }
