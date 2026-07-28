@@ -1,0 +1,46 @@
+---
+// src/components/Footer.astro
+import { Icon } from "astro-icon/components";
+
+const year = new Date().getFullYear();
+
+const email = "moe@moestdio.com";
+const github = "https://github.com/MoeStdio";
+const discordHandle = "_catcat.";
+---
+
+<footer class="py-8 px-6 text-center bg-neutral-950 snap-target">
+  <div class="flex justify-center items-center gap-8 flex-wrap">
+    <a
+      href={`mailto:${email}`}
+      aria-label="Email me"
+      class="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
+    >
+      <Icon name="lucide:mail" class="w-5 h-5" />
+      <span>Email</span>
+    </a>
+
+    <a
+      href={github}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="GitHub profile"
+      class="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity"
+    >
+      <Icon name="simple-icons:github" class="w-5 h-5" />
+      <span>GitHub</span>
+    </a>
+
+    <span
+      aria-label="Discord username"
+      class="flex items-center gap-2 opacity-80"
+    >
+      <Icon name="simple-icons:discord" class="w-5 h-5" />
+      <span>{discordHandle}</span>
+    </span>
+  </div>
+
+  <div class="w-16 h-px bg-current opacity-15 mx-auto my-6"></div>
+
+  <p class="text-sm opacity-50">© {year} moestdio. All rights reserved.</p>
+</footer>

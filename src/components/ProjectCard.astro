@@ -2,7 +2,7 @@
 const { title, coverText, reverse = false, sandboxHeader = false } = Astro.props;
 ---
 
-<section class="min-h-dvh w-full flex flex-col justify-center snap-center px-8 py-24 relative project-snap-target">
+<section class="min-h-dvh w-full flex flex-col justify-center snap-center px-8 py-16 md:py-24 relative snap-target">
 
     {sandboxHeader && (
         <div class="absolute top-8 md:top-20 w-full left-0 pointer-events-none">
@@ -10,7 +10,7 @@ const { title, coverText, reverse = false, sandboxHeader = false } = Astro.props
         </div>
     )}
 
-    <div class={`max-w-360rem mx-auto w-full flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-16 items-center`}>
+    <div class={`max-w-7xl mx-auto w-full flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}>
         
         <!-- Card -->
         <div class="w-full md:w-1/2 bg-slate-800 rounded-2xl aspect-video flex items-center justify-center border border-slate-700 hover:border-indigo-500 transition-colors cursor-pointer group shadow-2xl">
@@ -18,7 +18,7 @@ const { title, coverText, reverse = false, sandboxHeader = false } = Astro.props
         </div>
 
         <div class="w-full md:w-1/2 flex flex-col justify-center">
-            <h2 class="text-[clamp(1.75rem,6vw,4.5rem)] font-bold mb-8">{title}</h2>
+            <h2 class="text-[clamp(1.75rem,6vw,4.5rem)] font-bold mb-4 md:mb-8">{title}</h2>
             
             <div class="text-[clamp(1rem,2.5vw,1.5rem)] text-slate-400 leading-relaxed">
                 <slot />
