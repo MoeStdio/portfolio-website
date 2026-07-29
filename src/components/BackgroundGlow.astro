@@ -1,0 +1,22 @@
+---
+interface Props {
+    position?: "fixed" | "absolute";
+    hasSecondary?: boolean;
+}
+
+const { position = "absolute", hasSecondary = true } = Astro.props;
+const posClass = position === "fixed" ? "fixed" : "absolute";
+---
+
+<div
+    class={`${posClass} top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-indigo-600/20 rounded-full blur-[100px] md:blur-[120px] pointer-events-none -z-10 will-change-transform transform-gpu`}
+>
+</div>
+
+{
+    hasSecondary && (
+        <div
+            class={`${posClass} top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px] bg-cyan-500/10 rounded-full blur-[80px] md:blur-[100px] pointer-events-none -z-10 translate-x-1/4 -translate-y-1/4 will-change-transform transform-gpu`}
+        />
+    )
+}
