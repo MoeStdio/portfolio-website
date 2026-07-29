@@ -7,6 +7,9 @@ const lenis = new Lenis({
   wheelMultiplier: 0,
 });
 if (document.querySelector('.snap-target')) {
+  if (document.querySelector('[data-no-snap-mobile]') && window.innerWidth < 768) {
+    document.documentElement.style.touchAction = 'auto';
+  }
   let isTabVisible = true;
   document.addEventListener('visibilitychange', () => {
     isTabVisible = document.visibilityState === 'visible';
@@ -87,9 +90,11 @@ if (document.querySelector('.snap-target')) {
   }, { passive: false });
   let touchStartY = null;
   window.addEventListener('touchstart', (e) => {
+    if (document.querySelector('[data-no-snap-mobile]') && window.innerWidth < 768) return;
     touchStartY = e.touches[0].clientY;
   }, { passive: true });
   window.addEventListener('touchend', (e) => {
+    if (document.querySelector('[data-no-snap-mobile]') && window.innerWidth < 768) return;
     if (touchStartY === null || isSnapping) return;
     const touchEndY = e.changedTouches[0].clientY;
     const delta = touchStartY - touchEndY;
