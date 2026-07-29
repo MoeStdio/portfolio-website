@@ -1,0 +1,46 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+];
+---
+
+<header
+    class="fixed w-full top-0 z-50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md transition-colors duration-300 border-b border-slate-200 dark:border-transparent"
+>
+    <nav
+        class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between"
+    >
+        <a href="/" class="flex items-center">
+            <img
+                src="/logo.svg"
+                alt="moestdio logo"
+                fetchpriority="high"
+                loading="eager"
+                class="h-10 w-auto hover:opacity-80 transition-opacity dark:invert-0 dark:brightness-100 brightness-0"
+            />
+        </a>
+
+        <div class="flex items-center gap-6 md:gap-8">
+            <ul class="flex items-center gap-4 md:gap-8">
+                {
+                    navLinks.map((link) => (
+                        <li>
+                            <a
+                                class="text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
+                                href={link.href}
+                            >
+                                {link.name}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+
+            <ThemeToggle />
+        </div>
+    </nav>
+</header>
